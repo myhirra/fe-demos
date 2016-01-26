@@ -1,0 +1,16 @@
+@import "./lib/base";
+
+.component-header{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  top:0;
+  left:0;
+  border-bottom: 1px solid #eee;
+  background: #ff6666;
+  .logo{
+    flex:1;
+    color:#fff;
+    padding:px2rem(10px) px2rem(20px);
+  }
+}
