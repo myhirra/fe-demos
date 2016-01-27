@@ -1,0 +1,9 @@
+@import "./_variable.scss";
+@import "./_mixins.scss";
+@import "./_reset.scss";
+
+body{
+  font-size: px2rem(24px);
+  width: 100%;
+  height: 100%;
+}
