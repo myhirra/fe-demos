@@ -1,5 +1,5 @@
 {
-  "name": "react-demo",
+  "name": "react",
   "version": "0.1.0",
   "main": "app/index.js",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "font-loader":"0.1.2",
     "bootstrap":"^3.3.6",
     "file-loader":"0.8.5",
-    "url-loader":"0.5.7"
+    "url-loader":"0.5.7",
+    "extract-text-webpack-plugin":"1.0.1"
   }
 }
