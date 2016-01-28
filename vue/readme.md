@@ -10,7 +10,7 @@ vue简单实践，涉及到的关键词
 
 ##todo
 
-* ~~ vue-router ~~
+* ~~vue-router~~
 * images
 * fonts
 * postcss
