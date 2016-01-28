@@ -15,25 +15,21 @@
   }
 </style>
 
-<template id="component-content">
+<template>
   <div class="content">
     <comp-header></comp-header>
-    <h1 class="animated flipInY">
-      {{msg}}
-    </h1>
+
+    <router-view class="view"></router-view>
   </div>
 </template>
 
 <script type="text/javascript">
   import Vue from 'vue';
   import CompHeader from './components/header.vue';
+  import CompAbout from './components/about.vue';
+  import HomeHeader from './components/home.vue';
 
   export default {
-    data () {
-      return {
-        msg: 'Hello from vue-loader!'
-      }
-    },
     components: {
       CompHeader
     }
