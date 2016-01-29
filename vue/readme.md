@@ -8,6 +8,10 @@ vue简单实践，涉及到的关键词
 * hotcss
 * ...
 
+## demo
+
+  http://test.hirra.cn/fe-demos/vue
+
 ##todo
 
 * ~~vue-router~~

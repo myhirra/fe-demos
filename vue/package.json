@@ -4,7 +4,7 @@
   "main": "app/index.js",
   "license": "MIT",
 	"scripts":{
-		"build":"webpack",
+		"build":"webpack --release",
 		"dev":"webpack --progress --colors --watch"
 	},
   "dependencies": {
@@ -17,6 +17,8 @@
     "vue-loader":"6.1.0",
     "vue-router":"0.7.10",
     "style-loader":"0.13.0",
+		"css-loader":"0.23.1",
+		"vue-html-loader":"1.1.0",
     "minimist": "^1.1.1",
     "animate.css":"^3.4.0",
     "jade": "^1.11.0",
@@ -24,6 +26,7 @@
     "webpack-dev-server":"^1.8.0",
     "template-html-loader": "0.0.3",
     "extract-text-webpack-plugin":"1.0.1",
-    "sass-loader": "^3.1.2"
+    "sass-loader": "^3.1.2",
+		"node-sass":"3.3.3"
   }
 }

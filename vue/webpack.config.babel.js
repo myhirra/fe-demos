@@ -32,7 +32,7 @@ const config = {
 	]
 };
 
-new WebpackDevServer(webpack(config), {
+DEBUG && new WebpackDevServer(webpack(config), {
   publicPath: '/',
   hot: true,
   noInfo: false,
