@@ -13,7 +13,8 @@ const config = {
 	],
 	output: {
 		path: `${__dirname}/assets/`,
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		publicPath: '/static/'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx','.css'],
@@ -24,16 +25,18 @@ const config = {
 		loaders: [
 			{
 				test: /\.jsx?$/,
-				loaders: ['react-hot','babel?stage=0']
+				loaders: ['react-hot','babel'],
+				include: `${__dirname}/app/`,
+				exclude: /node_modules/
 			},
 			{
 				test: /\.(scss|css)$/,
+				exclude: /node_modules/,
 				loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]','sass-loader')
 			}
 		]
 	},
 	devtool: DEBUG ? 'source-map' : false,
-	plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)],
 	cache: DEBUG,
 	plugins: [
 		 new ExtractTextPlugin("styles.css"),

@@ -1,3 +1,5 @@
+'use strict';
+
 //react-ie8 hack https://www.npmjs.com/package/react-ie8
 import es5Shim from 'es5-shim';
 import es5Sham from 'es5-shim/es5-sham';
