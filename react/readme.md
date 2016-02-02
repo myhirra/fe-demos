@@ -8,6 +8,7 @@ react简单实践，涉及到的关键词
 * cssmodules
 * sass
 * dev tools
+* commands
 * ...
 
 ##todo
@@ -16,7 +17,6 @@ react简单实践，涉及到的关键词
 * fonts
 * postcss
 * ugly
-* commands
 * server
 * ...
 
@@ -39,3 +39,7 @@ react简单实践，涉及到的关键词
       exclude: /node_modules/,
       loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader')
     }
+
+2、hot-reloader的问题
+
+  Hot-reloader与ExtractTextPlugin貌似天生不兼容，在dev的时候，不要用ExtractTextPlugin

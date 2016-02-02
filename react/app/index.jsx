@@ -10,19 +10,13 @@ import { render } from 'react-dom'
 import { Router, Route, Link, hashHistory } from 'react-router'
 
 import App from './components/app/app.jsx'
-import Inbox from './components/inbox/inbox.jsx'
 import About from './components/about/about.jsx'
-import Message from './components/message/message.jsx'
 
 import commonStyles from './common/css/base.scss';
 
 render((
   <Router history={hashHistory}>
-    <Route path="/" component={App}>
-      <Route path="about" component={About} />
-      <Route path="inbox" component={Inbox}>
-        <Route path="messages/:id" component={Message} />
-      </Route>
-    </Route>
+    <Route path="/" component={App} />
+    <Route path="about" component={About} />
   </Router>
 ), document.getElementById('app'))
