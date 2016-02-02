@@ -14,6 +14,8 @@ import Inbox from './components/inbox/inbox.jsx'
 import About from './components/about/about.jsx'
 import Message from './components/message/message.jsx'
 
+import commonStyles from './common/css/base.scss';
+
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>

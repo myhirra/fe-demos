@@ -2,7 +2,7 @@ import React from 'react';
 
 class Inbox extends React.Component{
   render() {
-    return <h3>About</h3>
+    return <h3>Abouts</h3>
   }
 }
 

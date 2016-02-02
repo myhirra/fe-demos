@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import minimist from 'minimist';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import WebpackDevServer from 'webpack-dev-server';
 
 const argv = minimist(process.argv.slice(2));
 const DEBUG = !argv.release;
@@ -14,7 +15,7 @@ const config = {
 	output: {
 		path: `${__dirname}/assets/`,
 		filename: 'bundle.js',
-		publicPath: '/static/'
+		publicPath: '/'
 	},
 	resolve: {
 		extensions: ['', '.js', '.jsx','.css'],
@@ -32,7 +33,7 @@ const config = {
 			{
 				test: /\.(scss|css)$/,
 				exclude: /node_modules/,
-				loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]','sass-loader')
+				loader: ExtractTextPlugin.extract('style-loader','css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader')
 			}
 		]
 	},
@@ -43,6 +44,18 @@ const config = {
 		 new webpack.HotModuleReplacementPlugin(),
 	]
 };
+
+DEBUG && new WebpackDevServer(webpack(config), {
+  publicPath: '/',
+  hot: true,
+  historyApiFallback: true
+}).listen(3000, 'localhost', function (err, result) {
+  if (err) {
+    console.log(err);
+  }
+
+  console.log('Listening at localhost:3000');
+});
 
 !DEBUG && config.plugins.push(new webpack.optimize.UglifyJsPlugin());
 
