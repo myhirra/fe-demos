@@ -21,7 +21,8 @@ const config = {
 		loaders: [
 			{ test: /\.jsx?$/,loaders: ['react-hot','babel'],include: `${__dirname}/app/`,exclude: /node_modules/ },
 			{ test: /\.(scss|css)$/,exclude: /node_modules/,loaders: ['style-loader','css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!sass-loader']},
-			{ test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
+			{ test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
+			{ test: /\.json$/, loader: 'json-loader' }
 		]
 	},
 	devtool: 'source-map',

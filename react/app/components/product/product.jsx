@@ -1,44 +1,45 @@
 import React , { Component, PropTypes } from 'react'
+import { connect } from 'react-redux';
+import { add, minus } from '../../actions'
 
 class Product extends Component{
 
   constructor(props) {
     super(props);
-    this.state = props;
   }
 
   onAddClicked() {
-    store.dispatch({ type: 'ADD' });
+    this.props.dispatch(add());
   }
 
   onMinusClicked() {
-    if(this.state.number == 1){
+    if(this.props.number == 1){
       if(!confirm('全部删除？')){
         return false;
       }
     }
 
-    store.dispatch({ type: 'MINUS' });
+    this.props.dispatch(minus());
   }
 
   render() {
     return (
       <div>
         <div>
-          {this.state.id}
+          {this.props.id}
         </div>
         <div>
-          价格：{this.state.price * this.state.number}
+          价格：{this.props.price * this.props.number}
         </div>
         <div>
           <button
             onClick={this.onAddClicked.bind(this)}>
             +
           </button>
-          <span>{this.state.number}</span>
+          <span>{this.props.number}</span>
           <button
             onClick={this.onMinusClicked.bind(this)}
-            disabled={this.state.number>0?'':'disabled'}>
+            disabled={this.props.number>0?'':'disabled'}>
             -
           </button>
         </div>
@@ -54,9 +55,15 @@ Product.propTypes = {
 }
 
 Product.defaultProps = {
-  id: 'A1001',
-  number: 1,
-  price: 100
+  id:'Atest1',
+  number:1,
+  price:100
 }
 
-export default Product
+function select(state) {
+  return {
+    number:state.number
+  };
+}
+
+export default connect(select)(Product)

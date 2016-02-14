@@ -1,9 +1,13 @@
 import product from '../api/product.js'
 
-export function getProduct() {
-  return dispatch => {
-    product.getProduct(products => {
-      dispatch(product)
-    })
-  }
+export function add() {
+  return {
+   type: 'ADD'
+ };
+}
+
+export function minus() {
+  return {
+   type: 'MINUS'
+ };
 }

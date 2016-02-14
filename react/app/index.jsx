@@ -12,6 +12,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
 import cartApp from './reducers'
+import { getProduct } from './actions'
 
 import App from './components/app/app.jsx'
 import About from './components/about/about.jsx'
@@ -21,7 +22,11 @@ import commonStyles from './common/css/base.scss';
 const store = createStore(cartApp)
 
 render((
-  <App />
+  <Provider store={store}>
+    <App />
+  </Provider>
 ), document.getElementById('app'))
 
-store.subscribe(render)
+store.subscribe(() =>
+  console.log(store.getState())
+);
