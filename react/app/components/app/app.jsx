@@ -1,7 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router'
-
 import Slide from '../slide/slide.jsx'
+import Product from '../product/product.jsx'
 
 import styles from './app.scss';
 
@@ -9,9 +8,11 @@ class App extends React.Component{
   render() {
     return (
       <div>
-        <Slide></Slide>
+        <div className={styles.slide}>
+          <Slide></Slide>
+        </div>
         <div className={styles.content}>
-          <h1>App</h1>
+          <Product></Product>
         </div>
       </div>
     )

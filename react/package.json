@@ -4,7 +4,7 @@
   "main": "app/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack --config webpack.dev.config.babel.js",
+    "dev": "webpack --config webpack.dev.config.babel.js --progress --colors --watch",
     "pro": "webpack --config webpack.pro.config.babel.js"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "react-mixin": "^1.6.0",
     "react-router": "^2.0.0-rc5",
     "react-dom": "^0.14.3",
+    "react-redux": "^4.1.2",
     "core-js": "^2.0.2",
     "fetch-ie8": "^1.4.0",
     "redux": "^3.0.0",

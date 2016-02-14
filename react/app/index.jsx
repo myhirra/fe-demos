@@ -8,15 +8,20 @@ import consolePolyFill from 'console-polyfill';
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, Link, hashHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+import cartApp from './reducers'
 
 import App from './components/app/app.jsx'
 import About from './components/about/about.jsx'
 
 import commonStyles from './common/css/base.scss';
 
+const store = createStore(cartApp)
+
 render((
-  <Router history={hashHistory}>
-    <Route path="/" component={App} />
-    <Route path="about" component={About} />
-  </Router>
+  <App />
 ), document.getElementById('app'))
+
+store.subscribe(render)

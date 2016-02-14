@@ -25,7 +25,7 @@ const config = {
 		]
 	},
 	devtool: 'source-map',
-	cache: true,
+	cache: false,
 	plugins: [
 		 new webpack.HotModuleReplacementPlugin(),
 	]

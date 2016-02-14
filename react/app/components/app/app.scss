@@ -1,5 +1,10 @@
 @import '../../common/css/block.scss';
 
+.slide{
+  float: left;
+}
+
 .content{
   background-color: $primaryColor;
+  float: left;
 }
