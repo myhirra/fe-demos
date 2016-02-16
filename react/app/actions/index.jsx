@@ -1,5 +1,3 @@
-import product from '../api/product.js'
-
 export function add() {
   return {
    type: 'ADD'
