@@ -6,5 +6,5 @@
 	
 	* js数据类型
 
-* pc侧 react/webpack/hotcss
+* pc侧(ie8) react/webpack
 * wap侧 vue/webpack/hotcss
