@@ -1,0 +1,45 @@
+<!doctype>
+<html>
+	<head>
+		<style>
+
+			*{
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			.root{
+				width: 120px;
+				height: 120px;
+				background-color: green;
+				overflow: hidden;
+			}
+
+			.child{
+				width: auto;
+				height: auto;
+				display: inline-block;
+				position: relative;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background-color: yellow;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h3>
+			When I don't know the height of child
+		</h3>
+		<div class="root">
+			<div class="child">
+				<p>
+					line
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
