@@ -1,0 +1,152 @@
+<!doctype>
+<html>
+	<head>
+		<style>
+			#root, #inner, #text{
+		        margin: 5px;
+		        padding: 5px;
+		        box-sizing: border-box;
+		        cursor: default;
+		    }
+		    #root{
+		        width: 300px;
+		        height: 300px;
+		        border: indianred 3px solid;
+		    }
+		    #inner{
+		        width: 200px;
+		        height: 200px;
+		        border: hotpink 3px solid;
+		    }
+		    #text{
+		        display: block;
+		        width: 100px;
+		        height: 100px;
+		        border: orange 3px solid;
+		    }
+		</style>		
+	</head>
+	<body>
+	 	<div id="root">rootDiv
+	        <p id="inner">innerDiv
+	            <span id="text">text</span>
+	        </p>
+	    </div>
+
+	    <script>
+	    	/**
+	    	 * 绑定事件
+	    	 * @param  {Element}  ele       [元素]
+	    	 * @param  {String}   eventName [事件名]
+	    	 * @param  {Function} handler   [处理函数]
+	    	 */
+	    	var bindEvent = function(ele,eventName,handler,type) {
+	    		if(ele.attachEvent){
+	    			ele.attachEvent('on'+eventName,function(event){
+	    				event.target = event.srcElement;
+	    				//ie下，这个从事件模型标准来讲不对，但这里只为解决报错的问题。
+	    				//http://stackoverflow.com/questions/22692427/ie8-event-currenttarget-is-null-or-not-an-object
+	    				event.currentTarget = event.srcElement; 
+	    				handler.call(ele,event);
+	    			},type);
+	    		}else{
+	    			ele.addEventListener(eventName,function(event){
+	    				handler.call(ele,event);
+	    			},type);
+	    		}
+	    	}
+
+	    	/**
+	    	 * 取消绑定事件
+	    	 * @param  {Element}  ele       [元素]
+	    	 * @param  {String}   eventName [事件名]
+	    	 * @param  {Function} handler   [处理函数]
+	    	 */
+	    	var removeEvent = function(ele,eventName,handler){
+	    		if(ele.detachEvent){
+	    			ele.detachEvent('on'+eventName,function(){
+	    				event.target = event.srcElement;
+	    				event.currentTarget = event.srcElement;
+	    				handler.call(ele,event);
+	    			});
+	    		}else{
+	    			ele.removeListener(eventName,function(){
+	    				handler.call(ele,event);
+	    			});
+	    		}
+	    	}
+
+	    	/**
+	    	 * 阻止事件传递
+	    	 * @param  {Event}  e       [事件对象]
+	    	 */
+	    	var stopPropagation = function(e){
+	    		e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+	    	}
+	    </script>
+
+	    <script>
+	    	var root = document.getElementById("root"),
+	    		inner = document.getElementById("inner"),
+	    		text = document.getElementById("text");
+
+		    // 捕获阶段绑定事件
+		    bindEvent(window,'click', function(e){
+		        console.log("window 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(document,'click', function(e){
+		        console.log("document 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(document.documentElement,'click', function(e){
+		        console.log("documentElement 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(document.body,'click', function(e){
+		        console.log("body 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(root,'click', function(e){
+		        console.log("root 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(inner,'click', function(e){
+		        console.log("inner 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    bindEvent(text, 'click', function(e){
+		        console.log("text 捕获", e.target.nodeName, e.currentTarget.nodeName);
+		    }, true);
+
+		    // 冒泡阶段绑定的事件
+		    bindEvent(window, 'click', function(e){
+		        console.log("window 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(document, 'click', function(e){
+		        console.log("document 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(document.documentElement, 'click', function(e){
+		        console.log("documentElement 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(document.body, 'click', function(e){
+		        console.log("body 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(root, 'click', function(e){
+		        console.log("root 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(inner, 'click', function(e){
+		        console.log("inner 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+
+		    bindEvent(text, 'click', function(e){
+		        console.log("text 冒泡", e.target.nodeName, e.currentTarget.nodeName);
+		    }, false);
+	    </script>
+	</body>
+</html>
