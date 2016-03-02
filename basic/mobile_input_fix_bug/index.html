@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <style>
+            header, footer, main {
+                display: block;
+            }
+
+            header {
+                position: fixed;
+                height: 50px;
+                left: 0;
+                right: 0;
+                top: 0;
+            }
+
+            footer {
+                position: fixed;
+                height: 34px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            main {
+                /* main绝对定位，进行内部滚动 */
+                position: absolute;
+                top: 50px;
+                bottom: 34px;
+                /* 使之可以滚动 */
+                overflow-y: scroll;
+                /* 增加该属性，可以增加弹性 */
+                -webkit-overflow-scrolling: touch;
+            }
+
+            main .content {
+                height: 2000px;
+            }
+        </style>
+    </head>
+
+    <body class="layout-fixed">
+        <!-- fixed定位的头部 -->
+        <header>
+            
+        </header>
+        
+        <!-- 可以滚动的区域 -->
+        <main>
+            <div class="content">
+                
+            </div>
+        </main>
+        
+        <!-- fixed定位的底部 -->
+        <footer>
+            <input id="input-test" type="text" placeholder="Footer..."/>
+            <button class="submit">提交</button>
+        </footer>
+
+        <script>
+            var inputTest = document.getElementById('input-test'),
+                footer = document.getElementsByTagName('footer')[0];
+            inputTest.addEventListener('focus',function(e){
+                footer.style.position = 'static';
+            });
+
+            inputTest.addEventListener('blur',function(e){
+               footer.style.position = 'fixed'; 
+            })
+        </script>
+    </body>
+</html>
