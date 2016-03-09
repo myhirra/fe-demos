@@ -1,0 +1,22 @@
+<!doctype>
+<html>
+	<head>
+		<title>ajax</title>
+	</head>
+	<body>
+		<script src="./ajax.js"></script>
+		<script>
+			ajax('./test.json',function(xhr){
+				console.log('from ajax:',JSON.parse(xhr.responseText));
+			});
+
+			fetch('./test.json').then(function(res){
+				if(res.ok){
+					res.json().then(function(data){
+						console.log('from fetch:',data);
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
