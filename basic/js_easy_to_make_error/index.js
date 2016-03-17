@@ -15,3 +15,9 @@ console.log(1 == '1', 1 === '1');
 console.log(1 .toString());
 console.log(1.0 .toString());
 console.log(1 .toString());
+
+//JSON
+var obj1 = {a:Infinity};
+var obj2 = {a:function(){}};
+var obj3 = {a:undefined};
+console.log(JSON.stringify(obj1),JSON.stringify(obj2),JSON.stringify(obj3));
